@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Flask Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .calculator {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .calculator h1 {
+            color: #343a40;
+            font-weight: bold;
+        }
+        .btn-calculate {
+            background-color: #4CAF50;
+            border: none;
+        }
+        .btn-calculate:hover {
+            background-color: #45a049;
+        }
+        .result, .error {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .result {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator animate__animated animate__fadeInUp">
+        <h1 class="text-center mb-4">Flask Calculator</h1>
+        <form method="post" class="animate__animated animate__zoomIn">
+            <div class="mb-3">
+                <label for="num1" class="form-label">Enter First Number:</label>
+                <input type="number" id="num1" name="num1" class="form-control" placeholder="First number" required>
+            </div>
+            <div class="mb-3">
+                <label for="num2" class="form-label">Enter Second Number:</label>
+                <input type="number" id="num2" name="num2" class="form-control" placeholder="Second number" required>
+            </div>
+            <div class="mb-3">
+                <label for="operation" class="form-label">Select Operation:</label>
+                <select id="operation" name="operation" class="form-select" required>
+                    <option value="add">Addition</option>
+                    <option value="subtract">Subtraction</option>
+                    <option value="multiply">Multiplication</option>
+                    <option value="divide">Division</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-calculate w-100 py-2">Calculate</button>
+        </form>
+
+        <!-- Result Section -->
+        {% if result is not none %}
+            <div class="result text-center animate__animated animate__fadeInUp">Result: {{ result }}</div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error text-center animate__animated animate__shakeX">{{ error }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
